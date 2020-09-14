@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">myNodeMCU-HOME</string>
+    <string name="searchHint">myNodeMCU</string>
+    <string name="conBTN">FIND</string>
+    <string name="conBTNaf">CONNECTED</string>
+    <string name="ipLbl">IP ADDRESS:</string>
+    <string name="portLbl">PORT:</string>
+    <string name="goCTRLS">GO TO CONTROL BUTTONS</string>
+    <string name="d0">D0:</string>
+    <string name="d1">D1:</string>
+    <string name="d2">D2:</string>
+    <string name="d3">D3:</string>
+    <string name="d4">D4:</string>
+    <string name="d5">D5:</string>
+    <string name="d6">D6:</string>
+    <string name="d7">D7:</string>
+    <string name="d8">D8:</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="credit">Designed and Developed by</string>
+    <string name="creditTo">#praveensmedia</string>
+    <string name="ipAD">click on FIND</string>
+    <string name="porMe">port</string>
+    <string name="loc">.local</string>
+    <string name="feedBack">Feedback:</string>
+    <string name="feedHint">fromNodeMCU</string>
+    <string name="hos">serviceName</string>
+    <string name="conf">ESP-CONFIG</string>
+    <string name="goWfS">GO TO WIFI SETTINGS</string>
+    <string name="rsv">REFRESH</string>
+    <string name="noco">Not Connected</string>
+    <string name="info">Please go to WiFi settings and connect to myNodeMCU(default) your Esp Device Access point then click On REFRESH </string>
+    <string name="ssidHin">Your Home WIfi-SSID</string>
+    <string name="passHin">password</string>
+    <string name="ctrlScrnName">myNodeMCU-ControlButtons</string>
+    <string name="confScrn">myNodeMCU-Configuration</string>
+
+
+</resources>
