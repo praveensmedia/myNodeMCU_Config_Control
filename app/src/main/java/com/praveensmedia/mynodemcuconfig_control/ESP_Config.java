@@ -6,13 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -26,6 +29,7 @@ public class ESP_Config extends AppCompatActivity {
     private EditText ssidd,passs;
     public boolean trig=false;
     private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
 
 
 
@@ -37,6 +41,17 @@ public class ESP_Config extends AppCompatActivity {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
+        });
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-1910150019561767/6075437737");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
         });
 
         mAdView = findViewById(R.id.adView);
@@ -59,6 +74,11 @@ public class ESP_Config extends AppCompatActivity {
         Refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                }
                 if (trig){
                     MainActivity.cmm = "wf"+ssidd.getText().toString()+","+passs.getText().toString()+",";
                 }else{

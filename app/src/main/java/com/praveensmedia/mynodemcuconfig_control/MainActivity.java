@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-1910150019561767/6149775149");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         mHandler = new Handler();
         mStartButton = (Button) findViewById(R.id.pingService);
