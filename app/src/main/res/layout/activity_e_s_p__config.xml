@@ -114,7 +114,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/pass1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/pass1"
@@ -130,7 +131,8 @@
         app:layout_constraintBottom_toTopOf="@+id/status2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
