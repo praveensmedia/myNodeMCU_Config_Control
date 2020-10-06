@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-1910150019561767/6149775149");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
         mHandler = new Handler();
         mStartButton = (Button) findViewById(R.id.pingService);
         espConfig =(Button)findViewById(R.id.config);
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdClosed() {
                 // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                nextAddLoad();
+               // mInterstitialAd.loadAd(new AdRequest.Builder().build());
             }
 
         });
@@ -200,6 +202,37 @@ public class MainActivity extends AppCompatActivity {
         helper.stopDiscovery();
 
 
+    }
+    private void nextAddLoad() {
+
+//      New thread to perform background operation
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <= 30; i++) {
+                 final int currentProgressCount = i;
+                    //System.out.println(i);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+//                  Update the value background thread to UI thread
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // mProgressBar.setProgress(currentProgressCount);
+                        if (currentProgressCount == 30){
+                            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                            Log.d("ADDS", "new Add Loaded " );
+                        }
+
+                    }
+                });
+                 }
+            }
+        }).start();
     }
 
 }

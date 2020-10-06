@@ -43,13 +43,15 @@ public class ESP_Config extends AppCompatActivity {
             }
         });
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-1910150019561767/6075437737");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
                 // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                //mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                nextAddLoad();
             }
 
         });
@@ -136,6 +138,37 @@ public class ESP_Config extends AppCompatActivity {
                     }
                 });
                 // }
+            }
+        }).start();
+    }
+    private void nextAddLoad() {
+
+//      New thread to perform background operation
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i <= 30; i++) {
+                    final int currentProgressCount = i;
+                    //System.out.println(i);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+//                  Update the value background thread to UI thread
+                    mHandler2.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            // mProgressBar.setProgress(currentProgressCount);
+                            if (currentProgressCount == 30){
+                                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                                Log.d("ADDS", "new Add Loaded " );
+                            }
+
+                        }
+                    });
+                }
             }
         }).start();
     }
