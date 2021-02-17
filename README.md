@@ -13,7 +13,9 @@ Anyone can use these files. This is the Help page for myNodeMCU_Config_Control A
 1. By default '_http._tcp.' Services Only Discoverd on Your loacal network.
 2. By Switching AllServices, All type of services will be discovered.
 3. By Clicking On Discovered Services you can get its IP, PORT, ServiceName and ServiceType.
-4. For Updating Credentials to nodeMCU first time, You must Connect to Its softAP to get its IP then only goto App_Config_Screen.
+4. When you click on Discovered service that IP will be selected to Use in Control and Config screens of the myNodeMCU_Config_Control App
+5. You can Enter Your own IP Address when you dont have services/you dont want to choose one of them, to go to Control/Config screens of myNodeMCU_Config_Control App
+6. For Updating Credentials to nodeMCU first time, You must Connect to Its softAP to get its IP then only goto App_Config_Screen.
  
 ## Test_NodeMCU-App_Controls_Screen
 1. You must selected a service to get IP in Home_Screeen. then only proceed to this screen.
