@@ -3,7 +3,7 @@ Anyone can use these files. This is the Help page for myNodeMCU_Config_Control A
 1. You Can Download the App Now from playStore [ClickHere](https://play.google.com/store/apps/details?id=com.praveensmedia.mynodemcuconfig_control)
 2. You can Get IP,PORT,ServiceName and ServiceType of any Service available In your Network.
 3. Please clone [myNodeMCU_Config_Control_Example.ino](https://github.com/praveensmedia/myNodeMCU_Config_Control/blob/main/myNodeMCU_Config_Control_Example.ino)
-4. Support Libraries Included :
+4. Support Libraries:
 5. Compile & Upload to Your NodeMCU(ESP8266) as it is. do not change anything in the code for first time to test communication b/w App & NodeMCU
 6. After Uploading nodeMCU will blinks for 30 seconds(waits for the connection). There is no wifi credentials preloaded.
 7. Then it Starts a softAP named myNodeMCU-<chipID>, if you don't See softAP you can turn it ON by Making D7 GND Untill INBUIL_IN_LED blink twise. 
