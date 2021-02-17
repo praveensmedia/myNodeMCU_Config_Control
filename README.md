@@ -23,5 +23,5 @@ Anyone can use these files. This is the Help page for myNodeMCU_Config_Control A
 ## Update_Credentials-App_Config_Screen
 1. You must selected a service to get IP in Home_Screeen. then only proceed to this screen.
 2. just Enter SSID and Password in their fields. press UPDATE CREDENTIALS button. thats it. if Your Credentials Wrong Or That Wifi IS not Available, again it starts softAP.
-3. it will make http://<IP>/WC<WiFi-SSID>,<PASSWORD>,  'WC' is to recognise WifiCredentials Are Coming From APP. 
+3. it will make url: http://ipadress/WCwifissid,password,  'WC' is to recognise WifiCredentials Are Coming From APP. 
 4. Once you pressed 'UPDATE CREDENTIALS' button, nodeMCU will be Restarted.
