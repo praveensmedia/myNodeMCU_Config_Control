@@ -1,6 +1,5 @@
 package com.praveensmedia.mynodemcuconfig_control.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,12 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.praveensmedia.mynodemcuconfig_control.R;
 import com.praveensmedia.mynodemcuconfig_control.helpers.BackgroundTask;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +17,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import static com.praveensmedia.mynodemcuconfig_control.ui.Home.ip;
 
 
@@ -32,32 +26,18 @@ public class Controls extends AppCompatActivity {
     public static String response;
     private static String urltoShow;
     private static String command;
-    private InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
-        InterstitialAd.load(
-                Controls.this,
-                getString(R.string.interstialControl),
-                new AdRequest.Builder().build(),
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        interstitialAd = ad;
-                       // interstitialAd.show(ControlNodeMCU.this);
-                    }
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                        // Code to be executed when an ad request fails.
-                    }
-                });
         AdView mAdView = findViewById(R.id.adViewControl);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         final TextView urlHit=(TextView)findViewById(R.id.urlview);
         feedback =(TextView)findViewById(R.id.response);
+        String selected = "Selected IP: http:/"+ip;
+        urlHit.setText(selected);
         Button d0of = (Button) findViewById(R.id.d00);
         Button d1of = (Button) findViewById(R.id.d10);
         Button d2of = (Button) findViewById(R.id.d20);
@@ -88,7 +68,13 @@ public class Controls extends AppCompatActivity {
                 urlHit.setText(urltoShow);
             }
         };
-
+        /*d0of.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(Controls.this,"upressed",Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });*/
         d0of.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

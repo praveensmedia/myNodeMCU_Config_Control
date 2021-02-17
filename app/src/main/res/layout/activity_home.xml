@@ -73,13 +73,20 @@
 
     <Button
         android:id="@+id/refreshDiscover"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:background="@drawable/ic_baseline_refresh_24"
         app:layout_constraintBottom_toBottomOf="@+id/recycler"
         app:layout_constraintEnd_toEndOf="@+id/recycler" />
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AllServices:"
+        android:textColor="#FFFFFF"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler"
+        app:layout_constraintStart_toStartOf="@+id/recycler"/>
 
 
     <androidx.cardview.widget.CardView

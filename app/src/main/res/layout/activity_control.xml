@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginBottom="2dp"
         android:background="@drawable/debug_back"
         android:text="@string/hintUrlSend"
         android:textAlignment="center"
@@ -83,12 +84,12 @@
         android:id="@+id/controlCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
+        android:layout_marginBottom="2dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="3dp"
 
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

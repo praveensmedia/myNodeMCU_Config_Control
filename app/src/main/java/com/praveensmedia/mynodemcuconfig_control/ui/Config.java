@@ -1,33 +1,27 @@
 package com.praveensmedia.mynodemcuconfig_control.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.praveensmedia.mynodemcuconfig_control.R;
 import com.praveensmedia.mynodemcuconfig_control.helpers.BackgroundTask;
-
 import static com.praveensmedia.mynodemcuconfig_control.ui.Controls.response;
 import static com.praveensmedia.mynodemcuconfig_control.ui.Home.ip;
 
 public class Config extends AppCompatActivity {
     Button btnUpdate;
     EditText ssid,pass;
-    TextView responseView,urlhit;
+    TextView responseView,urlhit, showUrl;
     Controls controls;
     String command;
-    private InterstitialAd interstitialAd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +32,11 @@ public class Config extends AppCompatActivity {
         pass     =(EditText)findViewById(R.id.yourPASS);
         responseView =(TextView)findViewById(R.id.response);
         urlhit   =(TextView)findViewById(R.id.URL);
+        showUrl =(TextView)findViewById(R.id.linkurl2);
+        showUrl.setMovementMethod(LinkMovementMethod.getInstance());
         controls =new Controls();
-        InterstitialAd.load(
-                Config.this,
-                getString(R.string.interstialControl),
-                new AdRequest.Builder().build(),
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        interstitialAd = ad;
-                        // interstitialAd.show(Config.this);
-                    }
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                        // Code to be executed when an ad request fails.
-                    }
-                });
+        String selected = "Selected IP: http:/"+ip;
+        urlhit.setText(selected);
         AdView mAdView = findViewById(R.id.adViewConfig);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);

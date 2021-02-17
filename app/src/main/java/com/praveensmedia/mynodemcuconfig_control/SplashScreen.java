@@ -1,13 +1,10 @@
 package com.praveensmedia.mynodemcuconfig_control;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -59,6 +56,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 if(interstitialAd != null){
                     interstitialAd.show(SplashScreen.this);
+                    //startHome();
                 }else {
                     startHome();
                 }
