@@ -159,7 +159,7 @@ void loop() {
     digitalWrite(LED_BUILTIN,LOW);
     WiFi.softAP(Name+String(ESP.getChipId(),HEX));
     delay(100);
-    MDNS.begin("STCT_"+String(ESP.getChipId(),HEX));
+    MDNS.begin(Name+String(ESP.getChipId(),HEX));
     httpServer.begin();
     MDNS.addService(serviceName, "tcp", 80);
     }
