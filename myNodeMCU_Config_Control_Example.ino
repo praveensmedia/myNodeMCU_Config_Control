@@ -8,7 +8,7 @@ char WiFiID[20];
 char Key[20];
 int countForConn=0;
 bool late_connection=false;
-const String serviceName="http"; 
+const String serviceName="http"; //you can change this name to anything then remember to select allServices switch in the myNodeMCU_Config_Control App to detect your Service
 ESP8266WebServer httpServer(80);
 
 void setup() {
