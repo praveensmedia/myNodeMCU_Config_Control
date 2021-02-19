@@ -8,6 +8,7 @@ Anyone can use these files. This is the Help page for myNodeMCU_Config_Control A
 6. After Uploading nodeMCU will blinks for 30 seconds(waits for the connection). There is no wifi credentials preloaded.
 7. Then it Starts a softAP named myNodeMCU-(chipID), if you don't See softAP you can turn it ON by Making D7 GND Untill INBUIL_IN_LED blink twise. 
 8. Connect your phone to above softAP, so that App Can find Its IP, further instrustions below..
+9. Folow #unExpectedDeveloper Youtube Video [ClickHere](https://youtu.be/1yw1LIccA14)
 
 ## Service_Discovery-App_Home_Screen
 1. By default '_http._tcp.' Services Only Discoverd on Your loacal network.
