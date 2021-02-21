@@ -22,10 +22,14 @@ Anyone can use these files. This is the Help page for myNodeMCU_Config_Control A
 ## Test_NodeMCU-App_Controls_Screen
 1. You must selected a service to get IP in Home_Screeen. then only proceed to this screen.
 2. By Default Buttons assigned to Trigger HIGH OR LOW to Digital pins of nodeMCU.
-3. You can get Response from your device(if you write repose for it in your code)
+3. Update: You can Customize Name & Command of All Buttons By Long Pressing Buttons. You can Customise Texts also Like '--D0--' to 'light1'
+4. Update: Note: If You made Customisations like changing Commands, You need to make Changes in The Code Accordingly.
+5. You can get Response from your device(if you write repose for it in your code)
 
 ## Update_Credentials-App_Config_Screen
 1. You must selected a service to get IP in Home_Screeen. then only proceed to this screen.
 2. just Enter SSID and Password in their fields. press UPDATE CREDENTIALS button. thats it. if Your Credentials Wrong Or That Wifi IS not Available, again it starts softAP.
-3. it will make url: http://ipadress/WCwifissid,password,  'WC' is to recognise WifiCredentials Are Coming From APP. 
-4. Once you pressed 'UPDATE CREDENTIALS' button, nodeMCU will be Restarted.
+3. Update: You can Customize Command 'WC' to your Own Command by Long Pressing 'UPDATE CREDENTIALS BUTTON'
+4. By default it will make url: http://ipadress/WCwifissid,password,  'WC' is to recognise WifiCredentials Are Coming From APP. 
+5. Update: Note: If You made Customisations like changing Commands, You need to make Changes in The Code Accordingly.
+6. Once you pressed 'UPDATE CREDENTIALS' button, nodeMCU will be Restarted.
