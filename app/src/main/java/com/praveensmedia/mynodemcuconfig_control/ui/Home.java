@@ -44,7 +44,7 @@ public class Home extends AppCompatActivity {
     public static boolean switchChecked =false;
     NsdServiceInfo mService;
     public static NsdServiceInfo nsdServiceInfo;
-    TextView showIP,showPort,showName,showSName,showLink;
+    TextView showIP,showPort,showName,showSName,showLink,belowUrl;
     RecyclerView recyclerView;
     public static ArrayList<NsdServiceInfo> arrayList;
     RecyclerView.Adapter<viewHolder> myAdapter;
@@ -59,6 +59,9 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        /*AdView mAdView = findViewById(R.id.adViewHome);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);*/
         final FullScreenContentCallback fullScreenContentCallback = new FullScreenContentCallback() {
             @Override
             public void onAdDismissedFullScreenContent() {
@@ -82,8 +85,8 @@ public class Home extends AppCompatActivity {
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        interstitialAd = ad;
-                        interstitialAd.setFullScreenContentCallback(fullScreenContentCallback);
+                        //interstitialAd = ad;
+                        //interstitialAd.setFullScreenContentCallback(fullScreenContentCallback);
                     }
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError adError) {
@@ -97,8 +100,8 @@ public class Home extends AppCompatActivity {
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        interstitialAd1 = ad;
-                        interstitialAd1.setFullScreenContentCallback(fullScreenContentCallback1);
+                       // interstitialAd1 = ad;
+                        //interstitialAd1.setFullScreenContentCallback(fullScreenContentCallback1);
                     }
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError adError) {
@@ -112,9 +115,9 @@ public class Home extends AppCompatActivity {
         showPort =(TextView)findViewById(R.id.portSpace);
         showName =(TextView)findViewById(R.id.name);
         showSName =(TextView)findViewById(R.id.serviceName);
-        showLink =(TextView)findViewById(R.id.linkurl);
         switchCompat = (SwitchCompat)findViewById(R.id.switch1);
-        showLink.setMovementMethod(LinkMovementMethod.getInstance());
+        belowUrl =(TextView)findViewById(R.id.beloUrlHome);
+        belowUrl.setMovementMethod(LinkMovementMethod.getInstance());
         recyclerView =(RecyclerView)findViewById(R.id.recycler);
         arrayList = new ArrayList<NsdServiceInfo>();
         mNsdManager =(NsdManager)this.getSystemService(NSD_SERVICE);
@@ -156,9 +159,6 @@ public class Home extends AppCompatActivity {
                 return arrayList.size();
             }
         };
-        AdView mAdView = findViewById(R.id.adViewHome);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,7 +175,7 @@ public class Home extends AppCompatActivity {
                 if(ip.isEmpty()){
                     Toast.makeText(Home.this,"ipAddress is Empty",Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
-                    builder.setTitle("Enter Your IPAddress");
+                    builder.setTitle("Enter IPAddress to Control");
                     builder.setMessage("No Service Resolved.");
                     final EditText input = new EditText(Home.this);
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
@@ -217,7 +217,7 @@ public class Home extends AppCompatActivity {
                 if(ip.isEmpty()){
                     Toast.makeText(Home.this,"ipAddress is Empty",Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
-                    builder.setTitle("Enter Your IPAddress");
+                    builder.setTitle("Enter IPAddress to Config");
                     builder.setMessage("No Service Resolved.");
                     final EditText input = new EditText(Home.this);
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
@@ -246,7 +246,7 @@ public class Home extends AppCompatActivity {
                 }else{
                    if(interstitialAd1 !=null){
                         interstitialAd1.show(Home.this);
-                       // startConfig();
+                        //startConfig();
                    }else{
                         startConfig();
                    }

@@ -45,7 +45,7 @@
     <string name="txtConfig">CONFIG</string>
     <string name="txtControl">CONTROLS</string>
     <string name="txtHelp">-HELP-</string>
-    <string name="txtWEB">www.praveensmedia.com</string>
+    <string name="txtWEB"><a href="https://praveensmedia.com">#praveensmedia</a></string>
     <string name="txtLink"><a href="http://bit.ly/myNodeMCU">-HELP-</a></string>
 
     <!--Controls_Strings_txtViews-->
@@ -72,7 +72,7 @@
     <string name="hintResponse">response from your device</string>
 
     <!--Strings for TEST_Add IDs-->
-    <string name="appIDforAds">ca-app-pub-1910150019561767~7064505214</string>
+    <string name="appIDforAds">ca-app-pub-3940256099942544~3347511713</string>
     <string name="interstialControl">ca-app-pub-3940256099942544/1033173712</string>
     <string name="interstialConfig">ca-app-pub-3940256099942544/1033173712</string>
     <string name="interstialHome">ca-app-pub-3940256099942544/1033173712</string>

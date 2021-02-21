@@ -11,10 +11,10 @@
         android:id="@+id/cadforadds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/debug_back"
+            android:background="@drawable/border_links"
             android:orientation="vertical">
 
             <com.google.android.gms.ads.AdView
@@ -31,8 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:adSize="LARGE_BANNER"
                 android:layout_marginTop="4dp"
+                app:adSize="LARGE_BANNER"
                 app:adUnitId="@string/bannerHome" />
 
             <TextView
@@ -44,49 +44,62 @@
                 android:maxLines="1"
                 android:text="@string/txtDN"
                 android:textAlignment="center"
-                android:textColor="#ffffff"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/recyclerCard"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        android:background="@drawable/debug_back"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cadforadds"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@+id/cadforadds">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
 
-    <Button
-        android:id="@+id/refreshDiscover"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:background="@drawable/ic_baseline_refresh_24"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler"
-        app:layout_constraintEnd_toEndOf="@+id/recycler" />
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AllServices:"
-        android:textColor="#FFFFFF"
-        android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler"
-        app:layout_constraintStart_toStartOf="@+id/recycler"/>
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="AllServices:"
+                app:layout_constraintBottom_toBottomOf="@+id/recycler"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/refreshDiscover"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:background="@drawable/ic_baseline_refresh_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/recycler" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <androidx.cardview.widget.CardView
@@ -95,17 +108,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="4dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintBottom_toTopOf="@+id/controls"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/debug_back">
+            android:background="@drawable/border_links">
 
             <TextView
                 android:id="@+id/textView30"
@@ -116,7 +129,6 @@
                 android:maxLines="1"
                 android:text="@string/txtSR"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/strName"
-                android:textColor="#ffffff"
+
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +155,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/txtSrName"
                 android:textAlignment="textEnd"
-                android:textColor="#ffffff"
+
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +168,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/strType"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -170,7 +181,6 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/txtSrType"
                 android:textAlignment="textEnd"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -183,7 +193,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/strIP"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +206,6 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/txtIP"
                 android:textAlignment="textEnd"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -211,7 +219,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/strPORT"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -227,7 +234,6 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/txtPort"
                 android:textAlignment="textEnd"
-                android:textColor="#ffffff"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -238,96 +244,54 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/beloUrlHome"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        app:cardCornerRadius="8dp"
-        android:padding="2dp"
-        app:cardElevation="3dp"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/txtWEB"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/debug_back">
+    <Button
+        android:id="@+id/controls"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/buttons_style_on"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/txtControl"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/beloUrlHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/configure" />
 
-            <Button
-                android:id="@+id/configure"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/home_buttons"
-                android:text="@string/txtConfig"
-                android:textColor="#ffffff"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/linkurl"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/controls"
-                android:layout_width="0dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/home_buttons"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtControl"
-                android:textColor="#ffffff"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/linkurl"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/linkurl"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/text_backg"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:text="@string/txtLink"
-                android:textColor="#ffffff"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/controls"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/controls" />
-
-            <TextView
-                android:id="@+id/beloUrl"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtWEB"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/configure"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/configure"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/buttons_style_on"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/txtConfig"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/beloUrlHome"
+        app:layout_constraintEnd_toStartOf="@+id/controls"
+        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="2dp"
         android:layout_marginRight="4dp"
-        android:background="@drawable/debug_back"
+        android:background="@drawable/border_links"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +28,21 @@
             app:adSize="MEDIUM_RECTANGLE"
             app:adUnitId="@string/bannerConfig" />
 
+        <TextView
+            android:id="@+id/responsetxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/txtRSP"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
-   <!-- <LinearLayout
+    <!-- <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,136 +71,122 @@
     </LinearLayout>-->
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
-        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="4dp"
         android:padding="2dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/debug_back">
+            android:background="@drawable/border_links"
+            android:padding="4dp">
 
-            <TextView
-                android:id="@+id/linkurl2"
-                android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/imgYouTube"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/text_backg"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtLink"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/responsetxt"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/yt_logo_mono_light_250"
+                app:layout_constraintBottom_toBottomOf="@+id/imgGPlay"
+                app:layout_constraintEnd_toStartOf="@+id/imgGPlay"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/imgGPlay" />
 
             <TextView
-                android:id="@+id/responsetxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtRSP"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/response"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/response"
+                android:id="@+id/textView4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/debug_back"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text="@string/hintResponse"
+                android:layout_marginBottom="8dp"
+                android:text="#unExpDev"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                app:layout_constraintBottom_toTopOf="@+id/URL"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-
-                />
-
-            <TextView
-                android:id="@+id/URL"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/debug_back"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLines="2"
-                android:text="@string/hintUrlSend"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/yourSSID"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/updateCred"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/home_buttons"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtCRED"
-                android:textColor="#ffffff"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/beloUrl"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/beloUrl"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtWEB"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgYouTube"
+                app:layout_constraintStart_toStartOf="@+id/imgYouTube" />
+
+            <ImageView
+                android:id="@+id/imgGPlay"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/google_play_badge_250"
+                app:layout_constraintBottom_toBottomOf="@+id/imgGHub"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgGHub" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="UpdateApp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="@+id/imgGPlay"
+                app:layout_constraintStart_toStartOf="@+id/imgGPlay" />
+
+            <ImageView
+                android:id="@+id/imgGHub"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/github_logo_250"
+                app:layout_constraintBottom_toTopOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toEndOf="@+id/imgGPlay" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Instructions"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="@+id/imgGHub"
+                app:layout_constraintStart_toStartOf="@+id/imgGHub" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="2dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/updateCred"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_links">
 
             <EditText
                 android:id="@+id/yourSSID"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:autofillHints=""
                 android:ems="10"
@@ -196,7 +194,9 @@
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@+id/yourPASS"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/yourPASS"
@@ -208,12 +208,82 @@
                 android:ems="10"
                 android:hint="@string/hintPASS"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/updateCred"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/response"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/border_links"
+        android:ellipsize="end"
+        android:text="@string/hintResponse"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/URL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/URL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/border_links"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:padding="2dp"
+        android:text="@string/hintUrlSend"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/beloUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/txtWEB"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/updateCred"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/buttons_style_on"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/txtCRED"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/beloUrl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

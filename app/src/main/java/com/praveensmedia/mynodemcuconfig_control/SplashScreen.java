@@ -42,8 +42,8 @@ public class SplashScreen extends AppCompatActivity {
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        interstitialAd = ad;
-                        interstitialAd.setFullScreenContentCallback(fullScreenContentCallback);
+                        //interstitialAd = ad;
+                        //interstitialAd.setFullScreenContentCallback(fullScreenContentCallback);
                     }
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError adError) {
