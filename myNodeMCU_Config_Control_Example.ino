@@ -2,13 +2,14 @@
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <EEPROM.h>
-#define WiFiBtn  D7
+#define WiFiBtn  D7//You can start softAP by making D7 GND (1sec)untill IN_BUILTLED Blink twice.
 #define Name "nodeMCU_"
 char WiFiID[20];
 char Key[20];
 int countForConn=0;
+int ConnectionTimeOut=60;//increse this If You have a Lazy WiFi Router. 60 means 30seconds
 bool late_connection=false;
-const String serviceName="http"; //you can change this name to anything then remember to select allServices switch in the myNodeMCU_Config_Control App to detect your Service
+const String serviceName="http"; 
 ESP8266WebServer httpServer(80);
 
 void setup() {
@@ -29,12 +30,13 @@ void setup() {
   Serial.println(WiFiID);
   Serial.println(Key);
   pinMode(WiFiBtn ,INPUT_PULLUP);
-  pinMode(D0, OUTPUT);
+  pinMode(D0, OUTPUT); //In nodeMCU D0 has InBuilt LED near Programmer IC(CP2102..)
   pinMode(D1, OUTPUT);
   pinMode(D2, OUTPUT);
   pinMode(D3, OUTPUT);
-  pinMode(D4, OUTPUT);
+  pinMode(D4, OUTPUT); //D4 is LED_BUILTIN
   pinMode(D5, OUTPUT);
+  pinMode(D6, OUTPUT);
   pinMode(D8, OUTPUT);
   
   WiFi.mode(WIFI_STA);
@@ -45,38 +47,35 @@ void setup() {
     delay(500);
     digitalWrite(LED_BUILTIN,blnk);
     blnk=!blnk;
-   if(countForConn == 60){//30seconds-waits for connecting
+   if(countForConn == ConnectionTimeOut){
       countForConn=0;
-      late_connection=true;
+      late_connection=true;// you can handle late connection for Lazy Routers- code will be Added if anyone Interested
       break;
     }
   }
-  if(!late_connection){
+  if(!late_connection){// if connected to WiFi Do this
     MDNS.begin(Name+String(ESP.getChipId(),HEX));
     httpServer.begin();
     MDNS.addService(serviceName, "tcp", 80);
     Serial.println(WiFi.localIP());
-    }else{
-      WiFi.disconnect();//Disconnect to previously connected WiFi
-      //delay(1000);
-      WiFi.softAP(Name+String(ESP.getChipId(),HEX));
-      delay(100);
-      MDNS.begin(Name+String(ESP.getChipId(),HEX));  
-      httpServer.begin();
-      MDNS.addService(serviceName, "tcp", 80);
-      Serial.println(WiFi.localIP());
+    }else{// if not connected to WiFi Do this
+      startSoftAP();
       }
   digitalWrite(LED_BUILTIN,LOW);
 
-  //Commands and replay
-  httpServer.on("/d0H", []() {httpServer.send(200, "text/plain", "DO-SET-HIGH"); digitalWrite(D0,HIGH);});
+  //Commands and replay-'I recommend you give response to every command you hit to NodeMCU'
+  httpServer.on("/d0H",/* <-You can make your own commands*/ []() {
+    httpServer.send(200, "text/plain", "DO-SET-HIGH"); 
+    /* <-You can do whatever you want*/ // I don't recommed you to run 'delay()' in here..
+    digitalWrite(D0,HIGH);}); 
+    
   httpServer.on("/d1H", []() {httpServer.send(200, "text/plain", "D1-SET-HIGH"); digitalWrite(D1,HIGH);});
   httpServer.on("/d2H", []() {httpServer.send(200, "text/plain", "D2-SET-HIGH"); digitalWrite(D2,HIGH);});
   httpServer.on("/d3H", []() {httpServer.send(200, "text/plain", "D3-SET-HIGH"); digitalWrite(D3,HIGH);});
   httpServer.on("/d4H", []() {httpServer.send(200, "text/plain", "D4-SET-HIGH"); digitalWrite(D4,HIGH);});
   httpServer.on("/d5H", []() {httpServer.send(200, "text/plain", "D5-SET-HIGH"); digitalWrite(D5,HIGH);});
   httpServer.on("/d6H", []() {httpServer.send(200, "text/plain", "D6-SET-HIGH"); digitalWrite(D6,HIGH);});
-  //httpServer.on("/d7H", []() {httpServer.send(200, "text/plain", "D7-SET-HIGH"); digitalWrite(D7,HIGH);}); //D7 used for WiFi Reset Button.
+  httpServer.on("/d7H", []() {httpServer.send(200, "text/plain", "D7-SET-HIGH"); }); //D7 used for WiFi Reset Button.
   httpServer.on("/d8H", []() {httpServer.send(200, "text/plain", "D8-SET-HIGH"); digitalWrite(D8,HIGH);});
 
   httpServer.on("/d0L", []() {httpServer.send(200, "text/plain", "D0-SET-LOW"); digitalWrite(D0,LOW);});
@@ -86,7 +85,7 @@ void setup() {
   httpServer.on("/d4L", []() {httpServer.send(200, "text/plain", "D4-SET-LOW"); digitalWrite(D4,LOW);});
   httpServer.on("/d5L", []() {httpServer.send(200, "text/plain", "D5-SET-LOW"); digitalWrite(D5,LOW);});
   httpServer.on("/d6L", []() {httpServer.send(200, "text/plain", "D6-SET-LOW"); digitalWrite(D6,LOW);});
-  //httpServer.on("/d7L", []() {httpServer.send(200, "text/plain", "D7-SET-LOW"); digitalWrite(D7,LOW);});
+  httpServer.on("/d7L", []() {httpServer.send(200, "text/plain", "D7-SET-LOW"); });
   httpServer.on("/d8L", []() {httpServer.send(200, "text/plain", "D8-SET-LOW"); digitalWrite(D8,LOW);});
   
   //handle aything Else requested including WiFi Credentials
@@ -97,12 +96,21 @@ void handleElse() {
   Serial.println(dat);
   if(dat.substring(1,3)=="WC"){
     Serial.println(dat.substring(3));
-    setWiFiCredentials(dat.substring(3));
-    
+    setWiFiCredentials(dat.substring(3));   
     }else{
       httpServer.send(200, "text/plain", dat+"-Not Found");
       }
 }
+void startSoftAP(){
+  WiFi.disconnect();//Disconnect to previously connected WiFi
+  //delay(1000);
+  WiFi.softAP(Name+String(ESP.getChipId(),HEX));
+  delay(100);
+  MDNS.begin(Name+String(ESP.getChipId(),HEX));  
+  httpServer.begin();
+  MDNS.addService(serviceName, "tcp", 80);
+  Serial.println(WiFi.localIP());
+  }
 void setWiFiCredentials(String creds){
   httpServer.send(200, "text/plain", "done");
   delay(1000);
@@ -144,24 +152,20 @@ void loop() {
   delay(1);
   if(!digitalRead(WiFiBtn)){
     delay(1000);
-    if(!digitalRead(WiFiBtn)){  
-    MDNS.end();
-    WiFi.disconnect();
-    Serial.println("WIFI RST BTN PRESSED");
-    digitalWrite(LED_BUILTIN,LOW);
-    delay(50);
-    digitalWrite(LED_BUILTIN,HIGH);
-    delay(100);
-    digitalWrite(LED_BUILTIN,LOW);
-    delay(50);
-    digitalWrite(LED_BUILTIN,HIGH);
-    delay(100);
-    digitalWrite(LED_BUILTIN,LOW);
-    WiFi.softAP(Name+String(ESP.getChipId(),HEX));
-    delay(100);
-    MDNS.begin(Name+String(ESP.getChipId(),HEX));
-    httpServer.begin();
-    MDNS.addService(serviceName, "tcp", 80);
+    if(!digitalRead(WiFiBtn)){
+      Serial.println("WIFI RST BTN PRESSED");  
+      MDNS.end();
+      startSoftAP();
+      digitalWrite(LED_BUILTIN,LOW);
+      delay(50);
+      digitalWrite(LED_BUILTIN,HIGH);
+      delay(100);
+      digitalWrite(LED_BUILTIN,LOW);
+      delay(50);
+      digitalWrite(LED_BUILTIN,HIGH);
+      delay(100);
+      digitalWrite(LED_BUILTIN,LOW);
     }
-  } 
+  }
+  //Do whatever you want Here... 
 }
