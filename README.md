@@ -2,13 +2,14 @@
 Anyone can use these files. This is the Help page for myNodeMCU_Config_Control App on Android PlayStore.
 1. You Can Download the App Now from playStore [ClickHere](https://play.google.com/store/apps/details?id=com.praveensmedia.mynodemcuconfig_control)
 2. You can Get IP,PORT,ServiceName and ServiceType of any Service available In your Network.
-3. Please clone [myNodeMCU_Config_Control_Example.ino](https://github.com/praveensmedia/myNodeMCU_Config_Control/blob/main/myNodeMCU_Config_Control_Example.ino)
-4. Support Libraries:
-5. Compile & Upload to Your NodeMCU(ESP8266) as it is. do not change anything in the code for first time to test communication b/w App & NodeMCU
-6. After Uploading nodeMCU will blinks for 30 seconds(waits for the connection). There is no wifi credentials preloaded.
-7. Then it Starts a softAP named myNodeMCU-(chipID), if you don't See softAP you can turn it ON by Making D7 GND Untill INBUIL_IN_LED blink twise. 
-8. Connect your phone to above softAP, so that App Can find Its IP, further instrustions below..
-9. Folow #unExpectedDeveloper Youtube Video [ClickHere](https://youtu.be/1yw1LIccA14)
+3. Update:Now You an Fully Customize Button Names & Commands.. Enjoy!
+4. Please clone [myNodeMCU_Config_Control_Example.ino](https://github.com/praveensmedia/myNodeMCU_Config_Control/blob/main/myNodeMCU_Config_Control_Example.ino)
+5. Support Libraries:
+6. Compile & Upload to Your NodeMCU(ESP8266) as it is. do not change anything in the code for first time to test communication b/w App & NodeMCU
+7. After Uploading nodeMCU will blinks for 30 seconds(waits for the connection). There is no wifi credentials preloaded.
+8. Then it Starts a softAP named myNodeMCU-(chipID), if you don't See softAP you can turn it ON by Making D7 GND Untill INBUIL_IN_LED blink twise. 
+9. Connect your phone to above softAP, so that App Can find Its IP, further instrustions below..
+10. Folow #unExpectedDeveloper Youtube Video [ClickHere](https://youtu.be/1yw1LIccA14)
 
 ## Service_Discovery-App_Home_Screen
 1. By default '_http._tcp.' Services Only Discoverd on Your loacal network.
