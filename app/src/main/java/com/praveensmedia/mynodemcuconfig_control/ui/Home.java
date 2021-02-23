@@ -100,7 +100,7 @@ public class Home extends AppCompatActivity {
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd ad) {
-                       // interstitialAd1 = ad;
+                        //interstitialAd1 = ad;
                         //interstitialAd1.setFullScreenContentCallback(fullScreenContentCallback1);
                     }
                     @Override
@@ -176,7 +176,7 @@ public class Home extends AppCompatActivity {
                     Toast.makeText(Home.this,"ipAddress is Empty",Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
                     builder.setTitle("Enter IPAddress to Control");
-                    builder.setMessage("No Service Resolved.");
+                    builder.setMessage("No Service Selected.");
                     final EditText input = new EditText(Home.this);
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                     builder.setView(input);
@@ -218,7 +218,7 @@ public class Home extends AppCompatActivity {
                     Toast.makeText(Home.this,"ipAddress is Empty",Toast.LENGTH_SHORT).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
                     builder.setTitle("Enter IPAddress to Config");
-                    builder.setMessage("No Service Resolved.");
+                    builder.setMessage("No Service Selected.");
                     final EditText input = new EditText(Home.this);
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                     builder.setView(input);
@@ -319,6 +319,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onStartDiscoveryFailed(String serviceType, int errorCode) {
                 Log.d(TAG, "Discovery failed: Error code:" + errorCode);
+                Toast.makeText(Home.this,"Discovery Failed:"+errorCode,Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onStopDiscoveryFailed(String serviceType, int errorCode) {

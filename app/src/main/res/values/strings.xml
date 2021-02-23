@@ -71,7 +71,7 @@
     <string name="txtCRED">UPDATE CREDENTIALS</string>
     <string name="hintResponse">response from your device</string>
 
-    <!--Strings for TEST_Add IDs-->
+    Strings for TEST_Add IDs
     <string name="appIDforAds">ca-app-pub-3940256099942544~3347511713</string>
     <string name="interstialControl">ca-app-pub-3940256099942544/1033173712</string>
     <string name="interstialConfig">ca-app-pub-3940256099942544/1033173712</string>

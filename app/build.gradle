@@ -8,8 +8,8 @@ android {
         applicationId "com.praveensmedia.mynodemcuconfig_control"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 5
-        versionName "4.1"
+        versionCode 6
+        versionName "5.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

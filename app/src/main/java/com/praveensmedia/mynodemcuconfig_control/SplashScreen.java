@@ -3,6 +3,8 @@ package com.praveensmedia.mynodemcuconfig_control;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.ads.AdRequest;
@@ -16,7 +18,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.praveensmedia.mynodemcuconfig_control.ui.Home;
 
 public class SplashScreen extends AppCompatActivity {
-    private static final int SPLASH_TIME=2000;
+    private static final int SPLASH_TIME=3000;
     private InterstitialAd interstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,13 @@ public class SplashScreen extends AppCompatActivity {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd ad) {
                         //interstitialAd = ad;
+                        //Log.d("AddLoad","Add loaded");
                         //interstitialAd.setFullScreenContentCallback(fullScreenContentCallback);
                     }
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError adError) {
                         // Code to be executed when an ad request fails.
+                        //Log.d("AddLoad","Add not loaded");
                     }
                 });
 
@@ -57,8 +61,10 @@ public class SplashScreen extends AppCompatActivity {
                 if(interstitialAd != null){
                     interstitialAd.show(SplashScreen.this);
                     //startHome();
+                    //Log.d("AddLoad","Add not Called");
                 }else {
                     startHome();
+                    //Log.d("AddLoad","Add not Called");
                 }
             }
         },SPLASH_TIME);

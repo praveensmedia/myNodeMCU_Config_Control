@@ -136,7 +136,7 @@ public class Config extends AppCompatActivity {
                             editor.putString("cmd",newFunc);
                             editor.apply();
                         }
-                       Toast.makeText(Config.this,"entered_"+btnFun.getText()+"_",Toast.LENGTH_LONG).show();
+                       //Toast.makeText(Config.this,"entered_"+btnFun.getText()+"_",Toast.LENGTH_LONG).show();
 
                     }
                 });
@@ -151,5 +151,11 @@ public class Config extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 }
