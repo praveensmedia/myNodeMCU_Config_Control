@@ -24,6 +24,7 @@ void setup() {
       EEPROM.write(bb1,0);
       bb1++;
       }
+    Serial.println("FIRST-TIME RUN");
     EEPROM.write(100,firstTimeCheck); 
    }
   EEPROM.commit();
@@ -39,7 +40,8 @@ void setup() {
     Key[c]=EEPROM.read(wr);
     wr++;
   }
-  Serial.println(WiFiID);
+  Serial.println("WiFi Credentials:");
+  Serial.println(WiFiID); // These may print Empty or Garbage For First Time
   Serial.println(Key);
   pinMode(WiFiBtn ,INPUT_PULLUP);
   pinMode(D0, OUTPUT); //In nodeMCU D0 has InBuilt LED near Programmer IC(CP2102..)
