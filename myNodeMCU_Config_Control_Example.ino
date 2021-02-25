@@ -7,7 +7,8 @@
 char WiFiID[20];
 char Key[20];
 int countForConn=0;
-int ConnectionTimeOut=60;//increse this If You have a Lazy WiFi Router. 60 means 30seconds
+int firstTimeCheck = 243; //This is to store at address 100
+int ConnectionTimeOut=60; //increse this If You have a Lazy WiFi Router. 60 means 30seconds
 bool late_connection=false;
 const String serviceName="http"; 
 ESP8266WebServer httpServer(80);
@@ -15,6 +16,17 @@ ESP8266WebServer httpServer(80);
 void setup() {
   Serial.begin(115200);
   EEPROM.begin(512);
+  
+  int firstTimeInt =EEPROM.read(100); // At address 100  
+  if(firstTimeCheck != firstTimeInt ){//Below Code runs only once
+  int bb1 =0;                         //This is very important if you never used your EEPROM,  
+    while(bb1<512){                   //Otherwise your device will restart--may ran into Errors
+      EEPROM.write(bb1,0);
+      bb1++;
+      }
+    EEPROM.write(100,firstTimeCheck); 
+   }
+  EEPROM.commit();
   int WIFIlen =EEPROM.read(0);//Lenghth of SSID stored Here
   int PASSlen =EEPROM.read(1);//Lenghth of PASSWORD stored Here
   int wr=2;//SSID Max length 2nd byte to 24th byte - You can Change this as per your need
