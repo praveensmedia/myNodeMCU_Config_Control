@@ -7,7 +7,7 @@
     <string name="portLbl">PORT:</string>
     <string name="goCTRLS">GO TO CONTROL BUTTONS</string>-->
 
-<!--
+    <!--
     <string name="credit">Designed and Developed by</string>
     <string name="creditTo">#praveensmedia</string>
     <string name="ipAD">click on FIND</string>
@@ -42,11 +42,12 @@
     <string name="txtSrType">serviceType</string>
     <string name="txtIP">IP Address</string>
     <string name="txtPort">Port</string>
-    <string name="txtConfig">CONFIG</string>
+    <string name="txtConfig">ESP-CONFIG</string>
     <string name="txtControl">CONTROLS</string>
     <string name="txtHelp">-HELP-</string>
     <string name="txtWEB"><a href="https://praveensmedia.com">#praveensmedia</a></string>
     <string name="txtLink"><a href="http://bit.ly/myNodeMCU">-HELP-</a></string>
+    <string name="txtAllser">AllServices:</string>
 
     <!--Controls_Strings_txtViews-->
     <string name="scrnControls">Controls</string>
@@ -63,6 +64,11 @@
     <string name="d7">--D7--</string>
     <string name="d8">--D8--</string>
     <string name="hintUrlSend">…completeUrl…</string>
+    <string name="lnd">LandHere:</string>
+    <string name="anl0">ANL0</string>
+    <string name="anl1">ANL1</string>
+    <string name="anl2">ANL2</string>
+    <string name="zeros">000</string>
 
     <!--Config_Strings_txtViews-->
     <string name="txtSPT">SUPPORT👇</string>
@@ -70,23 +76,15 @@
     <string name="hintPASS">password</string>
     <string name="txtCRED">UPDATE CREDENTIALS</string>
     <string name="hintResponse">response from your device</string>
-
-    Strings for TEST_Add IDs
-    <string name="appIDforAds">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="interstialControl">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="interstialConfig">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="interstialHome">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="bannerHome">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="bannerControl">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="bannerConfig">ca-app-pub-3940256099942544/6300978111</string>
-
-    <!--Strings for ORIGINAL_Add IDs-->
-    <!--<string name="appIDforAds">ca-app-pub-1910150019561767~7064505214</string>
-    <string name="interstialControl">ca-app-pub-1910150019561767/9962657298</string>
-    <string name="interstialConfig">ca-app-pub-1910150019561767/6075437737</string>
-    <string name="interstialHome">ca-app-pub-1910150019561767/6149775149</string>
-    <string name="bannerHome">ca-app-pub-1910150019561767/4330530667</string>
-    <string name="bannerControl">ca-app-pub-1910150019561767/3981022788</string>
-    <string name="bannerConfig">ca-app-pub-1910150019561767/6112362104</string>-->
-
+    <string name="paypl">/praveensmedia</string>
+    <string name="donate"> <u>SUPPORT ME FOR MY WORK</u></string>
+    <string name="HELP"> <u>GIVE ME FEEDBACK &amp; GET UPDATES</u></string>
+    <string name="dev">#unExDev</string>
+    <string name="rat">RateApp</string>
+    <string name="inst">Instructions</string>
+    <string name="ytdisp">youtube link</string>
+    <string name="gpdisp">App link</string>
+    <string name="gtdisp">github link</string>
+    <string name="rpdisp">razorpay link</string>
+    <string name="ppdisp">paypal link</string>
 </resources>

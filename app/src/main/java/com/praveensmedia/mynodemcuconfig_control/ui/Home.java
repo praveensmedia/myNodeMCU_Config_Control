@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.os.Bundle;
@@ -23,15 +24,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.praveensmedia.mynodemcuconfig_control.R;
 import com.praveensmedia.mynodemcuconfig_control.helpers.viewHolder;
 import java.util.ArrayList;
+import static com.praveensmedia.mynodemcuconfig_control.SplashScreen.sharedPreferencesControls;
+import static com.praveensmedia.mynodemcuconfig_control.SplashScreen.ip;
 
 public class Home extends AppCompatActivity {
     NsdManager mNsdManager;
@@ -39,8 +36,6 @@ public class Home extends AppCompatActivity {
     NsdManager.DiscoveryListener mDiscoveryListener;
     public static String SERVICE_TYPE = "_http._tcp.";//"_services._dns-sd._udp";//
     public static final String TAG = "NSD_Helper";
-    public static String mServiceName = "ST";
-    public static String ip ="";
     public static boolean switchChecked =false;
     NsdServiceInfo mService;
     public static NsdServiceInfo nsdServiceInfo;
@@ -52,62 +47,11 @@ public class Home extends AppCompatActivity {
     Button btnControl,btnConfig,refresh;
     SwitchCompat switchCompat;
     boolean fromClick = false;
-    private InterstitialAd interstitialAd,interstitialAd1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        /*AdView mAdView = findViewById(R.id.adViewHome);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
-        final FullScreenContentCallback fullScreenContentCallback = new FullScreenContentCallback() {
-            @Override
-            public void onAdDismissedFullScreenContent() {
-                interstitialAd = null;
-                startControls();
-
-            }
-        };
-        final FullScreenContentCallback fullScreenContentCallback1 = new FullScreenContentCallback() {
-            @Override
-            public void onAdDismissedFullScreenContent() {
-                interstitialAd1 = null;
-                startConfig();
-
-            }
-        };
-        InterstitialAd.load(
-                Home.this,
-                getString(R.string.interstialControl),
-                new AdRequest.Builder().build(),
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        //interstitialAd = ad;
-                        //interstitialAd.setFullScreenContentCallback(fullScreenContentCallback);
-                    }
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                        // Code to be executed when an ad request fails.
-                    }
-                });
-        InterstitialAd.load(
-                Home.this,
-                getString(R.string.interstialConfig),
-                new AdRequest.Builder().build(),
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd ad) {
-                        //interstitialAd1 = ad;
-                        //interstitialAd1.setFullScreenContentCallback(fullScreenContentCallback1);
-                    }
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                        // Code to be executed when an ad request fails.
-                    }
-                });
         refresh = (Button)findViewById(R.id.refreshDiscover);
         btnConfig = (Button)findViewById(R.id.configure);
         btnControl = (Button)findViewById(R.id.controls);
@@ -121,6 +65,15 @@ public class Home extends AppCompatActivity {
         recyclerView =(RecyclerView)findViewById(R.id.recycler);
         arrayList = new ArrayList<NsdServiceInfo>();
         mNsdManager =(NsdManager)this.getSystemService(NSD_SERVICE);
+        String sname = sharedPreferencesControls.getString("name","serviceName");
+        String stype = sharedPreferencesControls.getString("type","serviceType");
+        String ipadr = sharedPreferencesControls.getString("ip","IP Address");
+        if(!ipadr.equals("IP Address"))ip=ipadr;
+        String port = sharedPreferencesControls.getString("port","Port");
+        showName.setText(sname);
+        showSName.setText(stype);
+        showIP.setText(ipadr);
+        showPort.setText(port);
         myAdapter = new RecyclerView.Adapter<viewHolder>() {
             @NonNull
             @Override
@@ -138,7 +91,6 @@ public class Home extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if(switchChecked){
-                            //Toast.makeText(Home.this, "Resolving: "+info.getServiceName(), Toast.LENGTH_SHORT).show();
                             arrayList.clear();
                             String type =info.getServiceType();
                             String[] Type =type.split("\\.");
@@ -186,12 +138,8 @@ public class Home extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             ip = "/"+input.getText().toString();
                             showIP.setText(ip);
-                            if(interstitialAd !=null){
-                                interstitialAd.show(Home.this);
-                                //startControls();
-                            }else{
-                                startControls();
-                            }
+                            startControls();
+
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -202,12 +150,7 @@ public class Home extends AppCompatActivity {
                     });
                     builder.show();
                 }else{
-                    if(interstitialAd !=null){
-                        interstitialAd.show(Home.this);
-                        //startControls();
-                    }else{
-                        startControls();
-                    }
+                    startControls();
                 }
             }
         });
@@ -222,18 +165,12 @@ public class Home extends AppCompatActivity {
                     final EditText input = new EditText(Home.this);
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
                     builder.setView(input);
-
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ip = "/"+input.getText().toString();
                             showIP.setText(ip);
-                            if(interstitialAd1 !=null){
-                                interstitialAd1.show(Home.this);
-                                //startConfig();
-                            }else{
-                                startConfig();
-                            }
+                            startConfig();
                         }
                     });
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -244,12 +181,7 @@ public class Home extends AppCompatActivity {
                     });
                     builder.show();
                 }else{
-                   if(interstitialAd1 !=null){
-                        interstitialAd1.show(Home.this);
-                        //startConfig();
-                   }else{
-                        startConfig();
-                   }
+                    startConfig();
                 }
 
             }
@@ -257,13 +189,11 @@ public class Home extends AppCompatActivity {
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //Toast.makeText(Home.this,"you checkedme"+isChecked,Toast.LENGTH_SHORT).show();
                 if(isChecked){
                     Toast.makeText(Home.this,"Discovering All Services",Toast.LENGTH_SHORT).show();
                     SERVICE_TYPE = "_services._dns-sd._udp";
                     arrayList.clear();
                     switchChecked=true;
-                    discoverServices(SERVICE_TYPE);
                 }else{
                     if(!fromClick){
                         SERVICE_TYPE = "_http._tcp.";
@@ -271,8 +201,8 @@ public class Home extends AppCompatActivity {
                     }fromClick=false;
                     arrayList.clear();
                     switchChecked=false;
-                    discoverServices(SERVICE_TYPE);
                 }
+                discoverServices(SERVICE_TYPE);
             }
         });
         discoverServices(SERVICE_TYPE);
@@ -355,32 +285,25 @@ public class Home extends AppCompatActivity {
             }
             @Override
             public void onServiceResolved(NsdServiceInfo serviceInfo) {
-              //  Log.d(TAG, "Resolve Succeeded. " + serviceInfo);
                 nsdServiceInfo =serviceInfo;
-                /*if(switchChecked){
-                    Log.d(TAG, "Resolve Succeeded. " + serviceInfo);
-                }else{
-                    ip=String.valueOf(serviceInfo.getHost());
-                    showIP.setText(ip);
-                    showName.setText(String.valueOf(serviceInfo.getServiceName()));
-                    showSName.setText(String.valueOf(serviceInfo.getServiceType()));
-                    showPort.setText(String.valueOf(serviceInfo.getPort()));
-
-                }*/
                 mService = serviceInfo;
-
             }
         };
     }
     public void showIPDetails(){
         if(nsdServiceInfo != null) {
             if (!switchChecked) {
-                // Log.d(TAG, "Resolve Succeeded. " + nsdServiceInfo);
                 ip = String.valueOf(nsdServiceInfo.getHost());
                 showIP.setText(ip);
                 showName.setText(String.valueOf(nsdServiceInfo.getServiceName()));
                 showSName.setText(String.valueOf(nsdServiceInfo.getServiceType()));
                 showPort.setText(String.valueOf(nsdServiceInfo.getPort()));
+                SharedPreferences.Editor editor = sharedPreferencesControls.edit();
+                editor.putString("name","(previous)"+nsdServiceInfo.getServiceName());
+                editor.putString("type",String.valueOf(nsdServiceInfo.getServiceType()));
+                editor.putString("ip",ip);
+                editor.putString("port",String.valueOf(nsdServiceInfo.getPort()));
+                editor.apply();
             }
         }
     }

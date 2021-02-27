@@ -26,15 +26,6 @@
             android:background="@drawable/border_links"
             android:orientation="vertical">
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adViewHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="4dp"
-                app:adSize="LARGE_BANNER"
-                app:adUnitId="@string/bannerHome" />
-
             <TextView
                 android:id="@+id/topBanner"
                 android:layout_width="match_parent"
@@ -87,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="AllServices:"
+                android:text="@string/txtAllser"
                 app:layout_constraintBottom_toBottomOf="@+id/recycler"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -246,7 +237,7 @@
 
     <TextView
         android:id="@+id/beloUrlHome"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"

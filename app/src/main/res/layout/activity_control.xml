@@ -1,48 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/controlButtons"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginRight="4dp"
-        android:background="@drawable/border_links"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adViewControl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            app:adSize="LARGE_BANNER"
-            app:adUnitId="@string/bannerControl" />
-
-        <TextView
-            android:id="@+id/topBanner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/txtRSP"
-            android:textAlignment="center"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
 
     <!--controls-->
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/landHere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/lnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/urlview"
@@ -55,8 +30,9 @@
         android:padding="2dp"
         android:text="@string/hintUrlSend"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/d01"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -64,19 +40,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/border_links"
+        android:padding="2dp"
         android:text="@string/hintResponse"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/urlview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/landHere" />
 
     <Button
         android:id="@+id/d00"
@@ -514,18 +488,139 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtd8" />
 
-            <TextView
-                android:id="@+id/beloUrl2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/txtWEB"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/beloUrl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/txtWEB"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/border_links"
+        android:padding="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/d01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/seekBarname1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLines="1"
+            android:text="@string/anl0"
+            android:textAlignment="gravity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/seekBarname1"
+            app:layout_constraintEnd_toStartOf="@+id/seekBarfeed1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/seekBarname1"
+            app:layout_constraintTop_toTopOf="@+id/seekBarname1" />
+
+        <TextView
+            android:id="@+id/seekBarfeed1"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zeros"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/seekBar1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/seekBar1" />
+
+
+        <TextView
+            android:id="@+id/seekBarname2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLines="1"
+            android:text="@string/anl1"
+            android:textAlignment="gravity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarname1" />
+
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/seekBarname2"
+            app:layout_constraintEnd_toStartOf="@+id/seekBarfeed2"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/seekBarname2"
+            app:layout_constraintTop_toTopOf="@+id/seekBarname2" />
+
+        <TextView
+            android:id="@+id/seekBarfeed2"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zeros"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/seekBar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/seekBar2" />
+
+        <TextView
+            android:id="@+id/seekBarname3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:maxLines="1"
+            android:text="@string/anl2"
+            android:textAlignment="gravity"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarname2" />
+
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/seekBarname3"
+            app:layout_constraintEnd_toStartOf="@+id/seekBarfeed3"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/seekBarname3"
+            app:layout_constraintTop_toTopOf="@+id/seekBarname3" />
+
+        <TextView
+            android:id="@+id/seekBarfeed3"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zeros"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/seekBar3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/seekBar3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.praveensmedia.mynodemcuconfig_control.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,15 +15,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.praveensmedia.mynodemcuconfig_control.R;
 import com.praveensmedia.mynodemcuconfig_control.helpers.BackgroundTask;
 
+import static com.praveensmedia.mynodemcuconfig_control.SplashScreen.ip;
 import static com.praveensmedia.mynodemcuconfig_control.ui.Controls.command;
 import static com.praveensmedia.mynodemcuconfig_control.ui.Controls.response;
-import static com.praveensmedia.mynodemcuconfig_control.ui.Home.ip;
 
 public class Config extends AppCompatActivity {
     Button btnUpdate;
@@ -33,7 +29,7 @@ public class Config extends AppCompatActivity {
     Controls controls;
     String command2;
     SharedPreferences sharedPreferences;
-    ImageView imgYT,imgGP,imgGH;
+    ImageView imgYT,imgGP,imgGH,imgRpay,imgPayP;
 
 
     @Override
@@ -52,9 +48,8 @@ public class Config extends AppCompatActivity {
         imgYT        =(ImageView)findViewById(R.id.imgYouTube);
         imgGP        =(ImageView)findViewById(R.id.imgGPlay);
         imgGH        =(ImageView)findViewById(R.id.imgGHub);
-        /*AdView mAdView = findViewById(R.id.adViewConfig);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);*/
+        imgRpay      =(ImageView)findViewById(R.id.imgRazor);
+        imgPayP      =(ImageView)findViewById(R.id.imgPaypal);
         imgYT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +72,24 @@ public class Config extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url ="https://play.google.com/store/apps/details?id=com.praveensmedia.mynodemcuconfig_control";
+                Uri uriUrl = Uri.parse(url);
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                startActivity(launchBrowser);
+            }
+        });
+        imgRpay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url ="https://rzp.io/l/praveensmedia";
+                Uri uriUrl = Uri.parse(url);
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                startActivity(launchBrowser);
+            }
+        });
+        imgPayP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url ="https://paypal.me/praveensmedia?locale.x=en_GB";
                 Uri uriUrl = Uri.parse(url);
                 Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
                 startActivity(launchBrowser);
@@ -136,8 +149,6 @@ public class Config extends AppCompatActivity {
                             editor.putString("cmd",newFunc);
                             editor.apply();
                         }
-                       //Toast.makeText(Config.this,"entered_"+btnFun.getText()+"_",Toast.LENGTH_LONG).show();
-
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
