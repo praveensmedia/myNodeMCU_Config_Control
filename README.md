@@ -10,6 +10,8 @@ Anyone can use these files. This is the Help page for myNodeMCU_Config_Control A
 8. Then it Starts a softAP named myNodeMCU-(chipID), if you don't See softAP you can turn it ON by Making D7 GND Untill INBUIL_IN_LED blink twise. 
 9. Connect your phone to above softAP, so that App Can find Its IP, further instrustions below..
 10. Folow #unExpectedDeveloper Youtube Video [ClickHere](https://youtu.be/1yw1LIccA14)
+11. Update: myNodeMCU Config_Control App ###NoADS from Version 6 
+12. If You Like My Work, Consider Donating [Razorpay](https://rzp.io/l/praveensmedia) , [PayPal](https://paypal.me/praveensmedia?locale.x=en_GB)
 
 ## Service_Discovery-App_Home_Screen
 1. By default '_http._tcp.' Services Only Discoverd on Your loacal network.
